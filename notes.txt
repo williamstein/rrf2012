@@ -13,3 +13,45 @@ CRITERION:
   * The primary criterion is the merit of the proposal.
   * Secondary criteria include suitability to the goals of the RRF and available opportunities and timeliness of the proposal for obtaining subsequent funding
   *** Proposals from senior faculty are funded only when they a) support a genuinely new direction in the applicant's research and/or career development or b) provide a unique opportunity to compete for subsequent one-time (or infrequently offered) funding or c) originate in a discipline for which external funding opportunities are minimal. ***
+
+
+============================================
+
+Letter to Jason Grout:
+
+Here are the main software components I'm using:
+
+   * Tinc -- VPN
+   * Stunnel -- SSL termination
+   * Haproxy -- load balancing and proxy server
+   * Cassandra -- database
+   * Nginx -- static content
+   * Tornado -- websocket server; messaging; dynamic content
+   * Sage -- math
+
+Also, I'm using
+
+   * Protobuf2 -- binary message format
+   * Paramiko -- configuration management (paramiko is an ssh implementation in Python)
+
+Sage server processes with the library pre-imported runs as root in completely separate virtual machines from anything else. When a server receives a connection, it forks, and drops privileges to a *random* user id (there is no need to actually create the user).   I haven't setup automatic quotas in my current deployment yet, but I had that in a previous version and will soon.          I had implemented the sage server using SSL and passwords, but completely removed that.  Instead, the server machine is on a VPN and has a firewall (setup using ufw) that only allows packets in from a select white list of other machines on the same VPN.        
+
+I had to switch from PostgreSQL to Cassandra because of my longterm estimated storage requirements, and my design goals regarding salvus being able withstand certain types of hardware and network failures.  
+For similar reasons, I switched from OpenVPN (which has a single point of failure) to Tinc, which is a p2p vpn with no single points of failure.  With my current *design*, you can just randomly kill quite a few machines, and the system just stays up.    
+
+Also, as I explained to you, I had planned to implement storage of user data on nodes, replicated using git and coordinates using PostgreSQL... but it turns out that Cassandra already does everything I was planning to implement and much, much more regarding distributed storage of data.  So that was another reason to use Cassandra instead of PostgreSQL.  I'm also not using memcached anymore, since Cassandra -- properly configured -- does much the same thing, with much less and cleaner client code needed. 
+
+There are many virtual machines involved in the current deployment.  
+Some machines are at   http://servedby.net/, which is a company a recent UW undergrad started, so I'm getting some temporary free hosting for now -- servedby uses VMware ESX server.     I don't have any *dedicated* hardware at UW yet, and what I do have is half Linux and half OS X, so I'm using VirtualBox since it is cross platform and easy to manage from the command line these days.   When I get dedicated hardware (four 1U machines should be arriving in a week or two), I'll initially put half of them in the math building, and half in a server room across campus -- and I'll use either VirtualBox or kvm (not sure).   I'm planning to invest more in hardware at UW, since bandwidth and hosting is very cheap for me at UW, but shockingly expensive in "the cloud", and prices on RAM are good right now. 
+
+Regarding code, the total amount I've written and kept (not thrown away) is very, very small (<3000 lines!).     I've written and thrown away over three times this much code.  Right now much of the code is in a file called admin.py, which is sort of like the "servers/admin" script in our sagenb install, but instead designed for deploying and controlling the components mentioned above.  It uses Paramiko and some design ideas from Ansible (and other config management programs). 
+
+I recently received the Google App Engine researcher award, which is $60K in app engine credit that must be used specifically for this project... though I don't know if I can bend that a little.   I currently don't actually have any viable strategy for making use of App Engine in this project.  Unfortunately, the App Engine award doesn't let one use the new Google Compute VM's (I checked), and anyways it's very hard to even get a chance to try the google VM's (I was denied).    I'm not thrilled about investing a lot of time into GAE, given how expensive it is (after the award expires).  The main power of GAE is serving lots of basically static (or easily generated using Python) content, and storing lots of data in Google's database.    
+
+I met with some people from Amazon, but nothing really came of it.  
+
+Regarding "open source" it would make sense for the sage server code I mention above to be GPL'd and open source, if there is interest.  It's probably not of any interest to Sage Cell Server, if you're planning to control Sage processes via ipython or something. 
+
+ -- William
+
+====================================================
