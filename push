@@ -1,0 +1,1 @@
+rsync -axvH --delete . wstein.org:www/grants/2012-rrf/

@@ -1,0 +1,104 @@
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{amsthm}%
+
+\hoffset=-.04\textwidth%
+\textwidth=1.08\textwidth%
+\voffset=-0.03\textheight
+\textheight=1.06\textheight
+%\voffset=0.5cm%
+%\textheight=1.08\textheight%
+
+\newcommand{\C}{\mathbf{C}}%
+\newcommand{\F}{\mathbf{F}}%
+\newcommand{\Q}{\mathbf{Q}}%
+\newcommand{\Qbar}{\overline{\Q}}%
+\newcommand{\Z}{\mathbf{Z}}%
+\newcommand{\R}{\mathbf{R}}%
+\newcommand{\T}{\mathbf{T}}%
+\renewcommand{\H}{\mathrm{H}}%
+
+\newcommand{\eps}{\varepsilon}%
+\newcommand{\con}{\equiv}%
+\newcommand{\isom}{\cong}%
+\newcommand{\rhobar}{\overline{\rho}}
+\newcommand{\tensor}{\otimes}
+
+
+% ---- SHA ----
+\DeclareFontEncoding{OT2}{}{} % to enable usage of cyrillic fonts
+  \newcommand{\textcyr}[1]{%
+    {\fontencoding{OT2}\fontfamily{wncyr}\fontseries{m}\fontshape{n}%
+     \selectfont #1}}%
+\newcommand{\Sha}{{\mbox{\textcyr{Sh}}}}%
+\newcommand{\tor}{\mbox{\scriptsize\rm tor}}
+
+\newcommand{\myname}{William Stein}
+\newcommand{\phone}{{\sf (206) 419-0925}}
+\newcommand{\email}{{\sf wstein@gmail.com}}
+\newcommand{\www}{{\sf http://wstein.org}}
+\newcommand{\address}{}
+\usepackage{fancyhdr,ifthen}
+\pagestyle{fancy}
+\cfoot{\thepage}  % no footers (in pagestyle fancy)
+% running left heading
+\lhead{\bfseries\LARGE\em \noindent{}\hspace{-.2em}\myname{}
+        \hfill \thisdocument\vspace{-.2ex}\\}
+% running right heading
+%\newcommand{\spc}{1.31em}
+\newcommand{\spc}{1em}
+
+%\rhead{\em {\small{\phone{}}} \hfill $\cdot$\hfill
+% \email{} \hfill $\cdot$\hfill \www{}}
+
+\rhead{\em {\small{\phone{}}} \hfill \email{} \hfill \www{}}
+
+\setlength{\headheight}{5ex}
+\newcommand{\mainhead}[1]{\begin{center}{\Large \bf #1}\end{center}}
+\newcommand{\head}[1]{\vspace{1.5ex}\par\noindent{\large \bf #1}\par\noindent}
+\newcommand{\subhead}[1]{\vspace{2ex}\par\noindent{\sl #1}\vspace{1ex}\par\noindent{}}
+\newcommand{\ptitle}{\sl}
+
+\newcommand{\hra}{\hookrightarrow}
+
+
+%%%% Theoremstyles
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{goal}[theorem]{Goal}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\DeclareMathOperator{\End}{End}%
+\DeclareMathOperator{\Tr}{Tr}%
+\DeclareMathOperator{\Res}{Res}%
+\DeclareMathOperator{\res}{res}%
+\DeclareMathOperator{\BSD}{BSD}%
+\DeclareMathOperator{\Gal}{Gal}%
+\DeclareMathOperator{\GL}{GL}%
+\DeclareMathOperator{\Aut}{Aut}%
+\DeclareMathOperator{\Reg}{Reg}%
+\DeclareMathOperator{\Vis}{Vis}%
+\DeclareMathOperator{\Ker}{Ker}%
+\DeclareMathOperator{\Coker}{Coker}%
+\DeclareMathOperator{\Sel}{Sel}%
+\DeclareMathOperator{\ord}{ord}%
+\DeclareMathOperator{\new}{new}%
+\DeclareMathOperator{\an}{an}%
+
