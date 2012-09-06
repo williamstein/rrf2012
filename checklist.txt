@@ -1,0 +1,7 @@
+[x] CV
+[x] cover
+[x] budget
+[ ] research
+[ ] citations
+[ ] support
+[ ] teaching
