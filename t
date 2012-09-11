@@ -1,6 +1,8 @@
-pdflatex cv
-pdflatex citations
-pdflatex research
-pdflatex budget
 pdflatex support
+pdflatex budget
+pdflatex cover
+pdflatex cv
+pdflatex research
+pdflatex citations
+pdflatex rrf
 
