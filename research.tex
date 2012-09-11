@@ -41,10 +41,11 @@ use \url{http://sagenb.org} at any given time.
 \end{figure}
 
 {\bf Goal of this project:} {\em Create a new web-based service called
-  Salvus, which will be highly available, scalable, robust, and always
-  fast.  Provide both free and non-free options, with revenue from the
-  non-free option supporting hardware, maintenance, and core
-  development of Sage. }
+  Salvus, which will be highly available, horizontally scalable and
+  able to gracefully handle up to 10,000 simultaneous users.  Provide
+  both free and non-free options, with revenue from the non-free
+  option supporting hardware, maintenance, and core development of
+  Sage.}
 
 Instead of students, teachers, and researchers having to pay to buy
 expensive commercial mathematical software and install it on their
@@ -73,12 +74,20 @@ Notebook's design, and isn't a priority for the first stage of work on
 Salvus.
 
 \begin{enumerate}
-\item {\bf Modern Interactive 2d and 3d Graphics}
-
-\item {\bf User and Site-specific Customization}
-
-\item {\bf Enterprise Customers and Data Security}
-
+\item Implement editors for the following document types: command
+  line, Sage worksheet, Latex document, Mathcad style free-form
+  document
+\item Integrate with the following cloud storage services: Google
+  Drive, Dropbox, ???
+\item Create a re-distributable enterprise version of Salvus that
+  customers can install on an internal secure network on their own
+  hardware.
+\item Fast interactive 2d and 3d graphics.
+\item Greatly improve support for using software other than Sage
+  through the Salvus interface, including Octave, Scilab.
+\item Negotiate license agreements to allow use of commercial software
+  through the Salvus interface: Matlab, Mathematica, Maple
+\item Support browser-based development of Sage
 \end{enumerate}
 
 
@@ -89,7 +98,7 @@ Salvus.
 \caption{Interactive Image Compression in the Sage Notebook\label{fig:interact}}
 \end{center}
 \end{figure}
-The Sage notebook is an AJAX application, like Gmail or Google Maps.
+The Sage notebook is a web application, like Gmail or Google Maps.
 It provides an interactive web-based worksheet in which one can enter
 arbitrary Sage commands, see beautifully typeset output, create 2-D
 and 3-D graphics, publish worksheets, and collaborate with other
