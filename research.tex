@@ -57,13 +57,14 @@ to pay a small fee to rent more available resources.
 \end{figure}
 \end{center}
 
+\newpage
 \noindent{}{\bf Goal:} {\em Create a web application (based on Sage)
   called Salvus, which is designed from the start to be secure, highly
   available, horizontally scalable and able to robustly handle up to
-  1,000 simultaneous users running active computations (far more users
-  could be connected).  Provide both free and non-free accounts, with
-  revenue from the non-free subscriptions supporting maintenance and
-  purchase of hardware, and the development of Sage.}
+  1,000 simultaneous computations\footnote{Far more than 1,000 users could be simultaneously
+  connected.}.  Provide both free and non-free accounts, with revenue
+  from the non-free subscriptions supporting maintenance and purchase
+  of hardware, and the development of Sage.}
 
 Instead of teachers and researchers having to pay to buy expensive
 commercial mathematical software and install it on their computers, or
@@ -112,9 +113,8 @@ of the Salvus project, to address these specific goals:
   in Sage), Matlab, Mathematica, Maple, and Magma. This will draw in
   users from the sciences.
 \item Implement editors for at least the following document types:
-  command line, \LaTeX{} document, Mathcad style free-form document,
-  Python and Sage files, and for fast interactive 2d and 3d graphics
-  using modern web standard such as HTML5 canvas and WebGL.
+  command line, \LaTeX{} document, 
+  Python and Sage files, and for fast interactive 2d and 3d graphics.
 \item Integrate with many popular cloud storage and repository hosting
   services, including Dropbox, Google Drive, Github, Google Code, and
   Bitbucket.
@@ -133,26 +133,26 @@ of the Salvus project, to address these specific goals:
 
 \subsection{Computer Hardware}
 A single server can serve static pages to 1,000 simultaneous users
-reasonably quickly.  The real challenge is that when users evaluate
+reasonably quickly.  The challenge is that when users evaluate
 mathematical expressions, such as computation of a difficult symbolic
-integral, they are potentially using substantial CPU
-resources. Moreover, we must keep a persistent isolated Sage process
-running for the duration of their session.  We will thus require a
-large number of computers that have the ability to run a Sage session.
-For high availability, there must be machines in many physical
-locations.
+integral or solve a large system of equations, they are potentially
+using substantial CPU resources and RAM. Moreover, we must keep a
+persistent Sage process running for the duration of their session.
+Salvus demands a large number of computers that have the ability to
+run a Sage session.  For high availability, there must be machines in
+many physical locations.
 
 Purchasing access to computers located at multiple data centers is
 critical to this proposal, given the dual goals of high availability
 (even when a node or whole data center goes down) and scalability
-(1,000 {\em simultaneous} users).  Use of Sage is extremely CPU
+(1,000 {\em simultaneous} computations).  Use of Sage is extremely CPU
 intensive, and based on extensive PI experience\footnote{During Summer
   2012, the PI ran a 2-week ``SIMUW'' workshop at UW, with about 30
   high school students hammering a Sage notebook server.}, which
 includes dozens of hands on tutorials over 5 years using the Sage
 notebook, the PI estimates that appropriately implemented, $n$-Ghz
 of compute power and $n$-gigabytes RAM translates to a good experience
-for roughly $2n$ simultaneous users.  The PI is rolling out the
+for roughly $2n$ simultaneous computations.  The PI is rolling out the
 following compute acquisition plan over the next 6 months:
 
 \begin{enumerate}
@@ -208,7 +208,7 @@ To support fault tolerance, the PI has designed Salvus so that it has
 no single (or even double!) points of failure.  The underlying
 database is {\bf Cassandra} (see \url{http://www.datastax.com/}),
 which is designed so that it continues to function well even if
-several nodes (or even a whole data center) fails.  Cassandra is
+several nodes fail.  Cassandra is
 heavily used by Netflix, Disney, and many other companies.
 
 For internode communications security, we use the encrypted
@@ -263,9 +263,9 @@ Though the PI has obtained funding for the Sage project from
 Microsoft, Google, the National Science Foundation, prize money,
 private donations, and contracts for Sage development, this has mostly
 been limited seed money.  The PI is the main architect and programmer
-of Salvus, and currently has no source of funding to pay his own
-salary during the next academic year.  Salvus subscriptions may
-eventually provide such funding, but this RRF would address the
+of Salvus, and currently has no source of funding so that he can work
+more on Salvus during the next academic year.  Salvus subscriptions
+may eventually provide such funding, but this RRF would address the
 critical period before the subscriber base grows sufficiently.
 
 
@@ -281,14 +281,14 @@ individual user and site-wide subscriptions to Salvus.
 The last RRF that the PI received in 2009 helped make Sage attractive
 to the {\em educational market}, which is a huge area of potential
 funding that Sage had not had success in yet.  The PI subsequently
-received a substantial CCLI Type 2 grant (see
-\url{http://utmost.aimath.org/}) from the educational part of NSF.
+received a CCLI Type 2 grant (see
+\url{http://utmost.aimath.org/}) from the educational part of NSF,
+which supported the key first month of work on Salvus during summer 2012.
 
 \subsection{RRF Scholar Application: documentation of teaching load}
-The math teaching load is about 4.5 quarter courses per year (we have
-a more complicated internal point scheme).  The PI is requesting
-replacement salary for 2 Calculus courses (e.g., MATH 124: {\em
-  Calculus with Analytic Geometry I}, 5 credits).
+The math teaching load is about 4.5 quarter courses per year.  The PI
+is requesting replacement salary for 2 Calculus courses (e.g., MATH
+124: {\em Calculus with Analytic Geometry I}, 5 credits).
 
 \subsection{C4C Letter of Support}\label{sec:letter}
 This is a letter of support from the UW Center for Commercialization.
