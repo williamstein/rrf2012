@@ -52,7 +52,7 @@ people attempting to use \url{http://sagenb.org} at any given time.
 \noindent{}{\bf Goal:} {\em Create a web application (based on Sage)
   called Salvus, which is designed from the start to be secure, highly
   available, horizontally scalable and able to robustly handle up to
-  10,000 simultaneous users.  Provide both free and non-free accounts,
+  1,000 simultaneous users.  Provide both free and non-free accounts,
   with revenue from the non-free subscriptions supporting maintenance
   and purchase of hardware, and the development of Sage.}
 
@@ -71,7 +71,7 @@ profound impact on education at all levels.
 There are several web-based software development environments, e.g.,
 \url{https://c9.io/}, which have some similarities to what we plan to
 implement with Salvus.  However, Salvus is much more focused on
-mathematical algorithm, mathematics education (at all levels), and
+mathematical algorithm, mathematics education, and
 mathematical research than any existing web applications.
 
 \section{Objectives}
@@ -87,12 +87,14 @@ startup money, and during some of Summer 2013 by an NSF grant.  This
 RRF would allow the PI to work fulltime straight through until late
 December 2013 on the next stage of the Salvus project. The specific
 goals for the second stage of development will address some
-significant {\em functionality} that is completely missing from the
+significant {\em functionality} that is  missing from the
 current Sage Notebook and Salvus.
 
 \begin{enumerate}
 \item Market an enterprise version of Salvus that customers can
   install on an internal secure network on their own hardware.
+  Similarly, support university and course wide site licenses for
+  Salvus.
 \item Greatly improve support for using software other than Sage
   through the Salvus interface, including Octave, Scilab, R, Matlab,
   Mathematica, Maple, and Magma. This will help draw in users from the
@@ -104,7 +106,7 @@ current Sage Notebook and Salvus.
 \item Integrate with many popular cloud storage and repository hosting
   services, including Dropbox, Google Drive, Github, Google Code, and
   Bitbucket.
-\item Make it possible for people to write and modify the code that
+\item Make it so one can write the code that
   gets included with Sage entirely using Salvus, so anybody can
   constribute to Sage without having to install Sage.
 \end{enumerate}
@@ -118,38 +120,84 @@ current Sage Notebook and Salvus.
 % obtained.
 
 \subsection{Computer Hardware}
+Using a good modern web server, a single high end machine could very
+easily reach our goal of serving up (say) static pages to 1,000
+simultaneous users reasonably quickly.  The real challenge with our
+project is that when users evaluate mathematical expressions, such as
+computation of a difficult symbolic integral, they are potentially
+using substantial CPU resources.  We will thus require a large number
+of computers that have the ability to run a Sage session that is
+accessible via simple TCP-based network protocol.  For high
+availability, there must be machines in multiple physical locations.
+
 Purchasing access to computers located at multiple datacenters is
 critical to this proposal, given the dual goals of high availability
 (fully available even when a data center goes down) and scalability
-(10,0000 simultaneous users).
+(1,0000 {\em simultaneous} users).  Use of Sage is extremely CPU
+intensive, and based purely on extensive experience\footnote{During
+  Summer 2012, the PI ran a 2-week ``SIMUW'' workshop at UW, with
+  about 30 high school students hammering a Sage notebook server.},
+which includes dozens of hands on tutorial over 5 years using the Sage
+notebook, the PI estimates that appropriate implemented, that $n$-Ghz
+of compute power and $n$-gigabytes RAM translates to a reasonable
+experience for roughly $2n$ simultaneous users.  This is our plan,
+though we will slowly grow into this over the course of the next year.
 
 \begin{enumerate}
-\item {\bf Padelford Hall Server Room:} 4 1U Dell R415's with 64GB RAM
-  and 16 3Ghz cores (one time cost of \$10K)
-\item {\bf UW Colocation Facility in the tower:} 4 1U Dell R415's with
-  64GB RAM and 16 3Ghz cores (one time cost of \$10K; yearly hosting
-  cost of \$1200)
+\item {\bf Padelford Hall Server Room:} 5 Dell R415's with 64GB RAM
+  and 16 3Ghz cores (one time cost of \$12,500K; no hosting costs) --
+  480 simultaneous users.   (Already purchased.)
+
+\item {\bf UW Colocation Facility in the tower:} 5 Dell R415's with
+  64GB RAM and 16 3Ghz cores (one time cost of \$12,500K; yearly
+  hosting cost of \$1200) -- 480 simultaneous users.  (Purchase in progress.)
+
 \item {\bf Servedby.net cloud computing
-  provider}\footnote{Servedby.net is owned and run by a recent UW
-  undergraduate}: 16 8GB instances (cost?)
-\item {\bf Amazon.com EC2:} 16 m1.large spot instances (one bids on
-  them; they are much cheaper than guaranteed instances; they are not
-  always available); cost -- around \$10K/year.
+  provider}\footnote{Servedby.net is owned and run by a recent UW 
+  undergraduate}: 8 8GB instances (cost?) -- 64 simultaneous users.
+  (Have two machines now.)
+
+\item {\bf Amazon.com EC2 could hosting:} 8 m1.large spot instances,
+  which is 4 1Ghz cores. (one bids on them; they are much cheaper than
+  guaranteed instances; they are not always available); cost -- at
+  most \$5K/year; only use when need it. -- 64 simultaneous users.
+
 \item {\bf Google App Engine:} the PI was awarded \$60K in Google App
   Engine credits, which can only be used to support Salvus during one
-  year from the date of first use.
+  year from the date of first use.  Can't currently be used for
+  running Sage, but I expect this to change.
 \end{enumerate}
 
+When nodes or a data center goes down, the site will continue to give
+users full access to their data, and they will be able to perform
+computations.  However, if they will have to share less compute
+resources among the same number of users, so running computations will
+be slower.  Non-paying users will get a much lower priority for
+resources.   
+
+If the number of paying users grows substantially beyond a few
+thousand (so that more than 1 thousand regularly use Salvus at once),
+it will be straightforward to increase the cloud computing resources.
+There is also significant space in the UW tower co-lo facility.
+
 \subsection{Computer Software}
+
 To support fault tolerance, the PI has designed Salvus so that it has
 no single (or even double!) points of failure.  The underlying
-database is Cassandra (see \url{http://www.datastax.com/}), which is
-designed so that it continues to function well even if several nodes
-(or even a whole data center) fails.  Cassandra was open sourced by
-Facebook, and is now heavily used by Netflix, Disney, and many other
-companies.
+database is {\bf Cassandra} (see \url{http://www.datastax.com/}),
+which is designed so that it continues to function well even if
+several nodes (or even a whole data center) fails.  Cassandra is
+heavily used by Netflix, Disney, and many other companies.
 
-
+For internode communications security, we use the encrypted
+fault-tolerant virtual private network software {\bf tinc} to connect
+all machines together in their own safe network.  For communications
+security between our cluster(s) and end users, we use {\bf stunnel}
+and SSL.  For HTTP/1.1 load balancing we use {\bf haproxy}.  We use
+the {\bf Tornado} web server, since we have a large number of standing
+event-based (websocket) connections, and Tornado designed to handle
+this use case.  We serve static content using {\bf Nginx}.  The real
+heavy lifting is done by heavily firewalled nodes running {\bf Sage}.
 
 
 \section{Time Schedule}
@@ -164,9 +212,10 @@ The PI intends to work full time for three months (October -- December 2013):
 \item {\bf October, 2013:} Package and test a standalone enterprise
   version of Salvus.  Work with lawyers at C4C to nail down licensing
   and copyright issues. The PI has existing longterm relationships
-  with two large potential customers.  Also, work to improve robust
-  support for R, Matlab, Magma, etc., which is of interest to such
-  customers.
+  with two large potential customers.  Improve support
+  for R, Matlab, Magma, etc., which is of interest to such customers,
+  and support university and course wide site licenses for Salvus.
+
 \item {\bf November, 2013:} Improve support for a wide range of
   filetypes, while integrating Salvus with popular cloud storage and
   hosting services.
@@ -217,8 +266,7 @@ currently makes available.
 \subsection{RRF Scholar Application: documentation of teaching load}
 The standard teaching load is about 4.5 quarter courses per year.  The
 PI is requesting a buyout for 2 Calculus courses (MATH 124: {\em
-  Calculus with Analytic Geometry I}, 5 credits, or similar), which he
-would likely teach if not supported by an RRF.
+  Calculus with Analytic Geometry I}, 5 credits, or similar). 
 
 \subsection{C4C Letter of Support}\label{sec:letter}
 Finally, we close this proposal with a letter of support from the UW
