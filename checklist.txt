@@ -5,8 +5,10 @@
 [x] research
 [x] cover: abstract -- (maximum of 250 words)
 [x] citations
+[x] cover: put in eGC1 number
 
 [ ] polish
-[ ] cover: put in eGC1 number
+[ ] spell check somehow
+[ ] submit officially to susan
 [ ] send: "SUGGESTED_REVIEWERS_MEMO.docx" to rrfprop@u.washington.edu right after I submit my proposal.
 

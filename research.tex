@@ -2,6 +2,7 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{pdfpages}
+\usepackage{hyperref}
 \include{macros}
 \newcommand{\thisdocument}{RRF: Proposed Research}
 
@@ -44,9 +45,9 @@ to pay a small fee to rent more available resources.
 \begin{center}
 \begin{figure}[ht]
 \hfill
-\includegraphics[height=0.28\textheight]{nb2}
+\includegraphics[height=0.2\textheight]{nb2}
 \hfill
-\includegraphics[height=0.28\textheight]{nb1}
+\includegraphics[height=0.2\textheight]{nb1}
 \hfill
 \mbox{}
 \caption{Screenshots Showing the Sage Notebook\label{fig:sagenb}}
@@ -67,23 +68,24 @@ them the option to {\em reliably} and efficiently use Sage over the
 web and confidently get their students to use it.  At many
 institutions, purchasing computer software---especially mathematical
 software---is a significant burden, and Sage has helped address this
-problem, but the burden of installing, mainting, and upgrading Sage
+problem, but the burden of installing, maintaining, and upgrading Sage
 remains, and the Sage notebook hasn't solved that problem because it
 is too slow and unreliable.  This project has the potential to have a
 profound impact on education at all levels.
 
-There are several web-based software development environments, e.g.,
-\url{https://c9.io/}, which have some similarities to what we plan to
-implement with Salvus.  However, Salvus is much more focused on
-mathematical algorithm, mathematics education, and
-mathematical research than any existing web applications.
+There are several commercial web-based software development
+environments such as \url{https://c9.io/} and
+\url{http://www.heroku.com/}, which have some similarities to what we
+plan to implement with Salvus.  However, Salvus is highly interactive
+and much more focused on mathematical algorithms, education, and
+research than existing commercial web applications.
 
 \section{Objectives}
 %What is the project designed to accomplish?
 
 The PI has spent much of Summer 2012 on the foundations of Salvus, and
 will make a limited-functionality version available by the end of
-September 2012 (see \url{https://salv.us}).  He intends to have a
+September 2012 (try \url{https://salv.us}).  He intends to have a
 version up and running with comparable functionality to the existing
 Sage Notebook by March 2012, and build a core subscriber base of at
 least 2500 users by August 2013; work during Winter 2013 is being
@@ -100,18 +102,18 @@ missing from the current Sage Notebook and Salvus.
   Similarly, support university and course wide site licenses for
   Salvus.
 \item Greatly improve support for using software other than Sage
-  through the Salvus interface, including Octave, Scilab, R, Matlab,
-  Mathematica, Maple, and Magma. This will help draw in users from the
-  sciences.
+  through the Salvus interface, including Octave, Scilab, R (included
+  in Sage), Matlab, Mathematica, Maple, and Magma. This will draw in
+  users from the sciences.
 \item Implement editors for at least the following document types:
-  command line, Latex document, Mathcad style free-form document,
-  python and sage files, and for fast interactive 2d and 3d graphics
+  command line, \LaTeX{} document, Mathcad style free-form document,
+  Python and Sage files, and for fast interactive 2d and 3d graphics
   using modern web standard such as HTML5 canvas and WebGL.
 \item Integrate with many popular cloud storage and repository hosting
   services, including Dropbox, Google Drive, Github, Google Code, and
   Bitbucket.
-\item Make it so one can write the code that
-  gets included with Sage entirely using Salvus, so anybody can
+\item Make it so users can write code that
+  gets included with Sage entirely using Salvus, so they can
   contribute to Sage without having to install Sage.
 \end{enumerate}
 
@@ -124,67 +126,70 @@ missing from the current Sage Notebook and Salvus.
 % obtained.
 
 \subsection{Computer Hardware}
-Using a good modern web server, a single high end machine could very
-easily reach our goal of serving up (say) static pages to 1,000
-simultaneous users reasonably quickly.  The real challenge with our
-project is that when users evaluate mathematical expressions, such as
-computation of a difficult symbolic integral, they are potentially
-using substantial CPU resources.  We will thus require a large number
-of computers that have the ability to run a Sage session that is
-accessible via simple TCP-based network protocol.  For high
-availability, there must be machines in multiple physical locations.
+A single server can easily serve static pages to 1,000 simultaneous
+users reasonably quickly.  The real challenge with our project is that
+when users evaluate mathematical expressions, such as computation of a
+difficult symbolic integral, they are potentially using substantial
+CPU resources.  We will thus require a large number of computers that
+have the ability to run a Sage session that is accessible via simple
+TCP-based network protocol.  For high availability, there must be
+machines in many physical locations.
 
 Purchasing access to computers located at multiple datacenters is
 critical to this proposal, given the dual goals of high availability
 (fully available even when a data center goes down) and scalability
 (1,000 {\em simultaneous} users).  Use of Sage is extremely CPU
-intensive, and based purely on extensive experience\footnote{During
-  Summer 2012, the PI ran a 2-week ``SIMUW'' workshop at UW, with
-  about 30 high school students hammering a Sage notebook server.},
-which includes dozens of hands on tutorial over 5 years using the Sage
+intensive, and based on extensive PI experience\footnote{During Summer
+  2012, the PI ran a 2-week ``SIMUW'' workshop at UW, with about 30
+  high school students hammering a Sage notebook server.}, which
+includes dozens of hands on tutorial over 5 years using the Sage
 notebook, the PI estimates that appropriate implemented, that $n$-Ghz
-of compute power and $n$-gigabytes RAM translates to a reasonable
-experience for roughly $2n$ simultaneous users.  This is our plan,
-though we will slowly grow into this over the course of the next year.
+of compute power and $n$-gigabytes RAM translates to a good experience
+for roughly $2n$ simultaneous users.  The PI is rolling out the
+folloing compute acquisition plan over the next 6 months:
 
 \begin{enumerate}
-\item {\bf Padelford Hall Server Room:} 5 Dell R415's with 64GB RAM
+\item {\bf Padelford Hall:} 5 Dell R415's with 64GB RAM
   and 16 3Ghz cores (one time cost of \$12,500K; no hosting costs) --
-  480 simultaneous users.   (Already purchased.)
+  480 simultaneous users. 
 
-\item {\bf UW Colocation Facility in the tower:} 5 Dell R415's with
+\item {\bf UW Colocation Facility in the UW tower:} 5 Dell R415's with
   64GB RAM and 16 3Ghz cores (one time cost of \$12,500K; yearly
-  hosting cost of \$1200) -- 480 simultaneous users.  (Purchase in progress.)
-
-\item {\bf Servedby.net cloud computing
-  provider}\footnote{Servedby.net is owned and run by a recent UW 
-  undergraduate}: 8 8GB instances (cost?) -- 64 simultaneous users.
-  (Have two machines now.)
-
-\item {\bf Amazon.com EC2 could hosting:} 8 m1.large spot instances,
-  which is 4 1Ghz cores. (one bids on them; they are much cheaper than
-  guaranteed instances; they are not always available); cost -- at
-  most \$5K/year; only use when need it. -- 64 simultaneous users.
+  hosting cost of \$1200) -- 480 simultaneous users. 
 
 \item {\bf Google App Engine:} the PI was awarded \$60K in Google App
-  Engine credits, which can only be used to support Salvus during one
-  year from the date of first use.  Unfortunately, Google App Engine
-  is an extremely restricted application hosting environment, which
-  can't yet run Sage, and PI has not yet determined how best to make
-  use of it.
+  Engine credits via a competitive application procedure.  Google App
+  Engine is a restricted application hosting environment, which can't
+  yet run Sage; the PI is working with Google to determine how best to
+  make use of these resources.
+
+\item {\bf Servedby.net cloud computing
+  provider}\footnote{\url{http://servedby.net/} is owned and run by a
+  recent UW undergraduate.}: 8 Linux 4R instances (about \$15K/year)
+  -- 64 simultaneous users.
+
+\item {\bf Amazon.com EC2 could hosting:} 8 m1.large spot instances
+  (four 1 Ghz cores each).  One bids on these; they are cheaper than
+  guaranteed instances, but are not always available (about
+  \$10K/year) -- 64 simultaneous users.
+
 \end{enumerate}
 
-When nodes or a data center goes down, the site will continue to give
-users full access to their data, and they will be able to perform
-computations.  However, if they will have to share less compute
-resources among the same number of users, so running computations will
-be slower.  Non-paying users will get a much lower priority for
-resources.   
+The PI is focusing initially on hardware hosted at UW, since power,
+network bandwidth and hosting are highly subsidized by other UW
+activities.  (Also, spare cycles on this hardware will be used for
+mathematics research projects while the user base for Salvus grows.)
 
-If the number of paying users grows substantially beyond a few
-thousand (so that more than 1 thousand regularly use Salvus at once),
-it will be straightforward to increase the cloud computing resources.
-There is also significant space in the UW tower co-lo facility.
+When a node (or even a whole data center) go down, the site will
+continue to give users full access to their data, and they will be
+able to perform computations.  However, users will share less compute
+resources, so running computations may be slower.  Non-paying users
+will have a lower priority for resources.
+
+If the number of paying users grows so that sufficient revenue is
+being generated from subscriptions, it will be easy to increase cloud
+computing resources to meet demands.  Moreover, in the long run, cloud
+hosting provides the option to have servers located around the world.
 
 \subsection{Computer Software}
 
@@ -197,13 +202,14 @@ heavily used by Netflix, Disney, and many other companies.
 
 For internode communications security, we use the encrypted
 fault-tolerant virtual private network software {\bf tinc} to connect
-all machines together in their own safe network.  For communications
-security between our cluster(s) and end users, we use {\bf stunnel}
-and SSL.  For HTTP/1.1 load balancing we use {\bf haproxy}.  We use
-the {\bf Tornado} web server, since we have a large number of standing
-event-based (websocket) connections, and Tornado designed to handle
-this use case.  We serve static content using {\bf Nginx}.  The real
-heavy lifting is done by heavily firewalled nodes running {\bf Sage}.
+all machines together in their own safe network (tinc is a so-called
+P2P VPN with no single point of failure, in contrast to openVPN).  For
+communications security between our cluster(s) and end users, we use
+{\bf stunnel} and SSL.  For HTTP/1.1 load balancing we use {\bf
+  haproxy}.  We use the {\bf Tornado} web server, which excels at
+serving a large number of standing connections.  We serve static
+content using {\bf Nginx}.  The real heavy lifting is done by heavily
+firewalled nodes running {\bf Sage}.
 
 
 \section{Time Schedule}
@@ -212,7 +218,7 @@ heavy lifting is done by heavily firewalled nodes running {\bf Sage}.
 % is normally limited to one year. A no-cost extension of up to one
 % year may be granted if requested and adequately justified.
 
-The PI intends to work full time for three months (October -- December 2013):
+The PI proposes to work full time for three months supported by the RRF:
 
 \begin{enumerate}
 \item {\bf October, 2013:} Package and test a standalone enterprise
@@ -244,14 +250,16 @@ The PI intends to work full time for three months (October -- December 2013):
 Though the PI has obtained funding for the Sage project from
 Microsoft, Google, the National Science Foundation, prize money,
 private donations, and contracts with industry for Sage development,
-this has mostly been limited seed money.  
-The PI currently has no source of funding to pay his own salary except
-during the summer.  He hopes that this project will eventually provide
-such funding, but there is a critical period before the subscriber
-base grows sufficiently, which this RRF would address.
+this has mostly been limited seed money.  The PI is the main architect
+and programmer of Salvus (though he has collaborated with several UW
+undergrads on design work), and currently has no source of funding to
+pay his own salary next academic year.  He hopes that this project
+will eventually provide such funding, but there is a critical period
+before the subscriber base grows sufficiently, which this RRF would
+address.
 
 
-The goals of the current proposal are to greatly enhance Sage's level
+As explained above, the goals of the current proposal are to greatly enhance Sage's level
 of {\em robust availability} and provide a sustainable UW-based
 revenue stream to support Sage development.  If successful, this will
 have a huge and direct impact both on development of Sage and the
@@ -260,23 +268,20 @@ mission of the Royalty Research Fund by providing a unique opportunity
 to increase the PI's competitiveness for subsequent funding via
 individual user and site-wide subscriptions to Salvus.
 
-The last RRF that the PI received in 2009 made Sage attractive to the
+The last RRF that the PI received in 2009 help make Sage attractive to the
 {\em educational market}, which was a huge area of potential funding
 that Sage had not had success in yet.  After that RRF, the Sage
 project (and the PI) received a substantial CCLI Type 2 grant (see
 \url{http://utmost.aimath.org/}) from the educational part of NSF.
-Similarly, supporting the current proposal is likely to expand the
-potential funding options for Sage dramatically, by very efficiently
-providing a new key service that is in high demand, but nobody
-currently makes available.
 
 \subsection{RRF Scholar Application: documentation of teaching load}
-The standard teaching load is about 4.5 quarter courses per year.  The
-PI is requesting a buyout for 2 Calculus courses (MATH 124: {\em
-  Calculus with Analytic Geometry I}, 5 credits, or similar). 
+The  math teaching load is about 4.5 quarter courses per year
+(we have a more complicated internal point scheme).  The PI
+is requesting a buyout for 2 Calculus courses (MATH 124: {\em Calculus
+  with Analytic Geometry I}, 5 credits, or similar).
 
 \subsection{C4C Letter of Support}\label{sec:letter}
-Finally, we close this proposal with a letter of support from the UW
+This is a letter of support from the UW
 Center for Commercialization, which helps explain how the results of
 this work could lead to further funding.
 
