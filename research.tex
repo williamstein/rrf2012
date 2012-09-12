@@ -20,11 +20,12 @@ project, which has grown substantially since he was recruited by UW in
 of Sage per month, and over 55,000 unique visitors each month to the
 \url{http://sagemath.org} website.  Sage is a very large free
 self-contained program for doing sophisticated mathematics, which you
-can download and run on your computer.  The goal of the Sage project is to
-create a viable free open source alternative to the commercial systems
-Maple, Mathematica, Matlab and Magma.
-The PI has published several articles about Sage, including
-\cite{} ??.
+can download and run on your computer.  It incorporates nearly 100
+other programs, and already has interfaces to all other popular math
+software systems.  The goal of the Sage project is to create a viable
+free open source alternative to the commercial systems Maple,
+Mathematica, Matlab and Magma.  The PI has published several articles
+about Sage, including \cite{} ??.
 
 The Sage notebook, whose development was partly supported by the RRF
 program in 2009, is the primary user interface to Sage.  It was
@@ -68,7 +69,7 @@ is too slow and unreliable.  This project has the potential to have a
 profound impact on education at all levels.
 
 There are several web-based software development environments, e.g.,
-\url{https://c9.io/}, which have some similarieties to what we plan to
+\url{https://c9.io/}, which have some similarities to what we plan to
 implement with Salvus.  However, Salvus is much more focused on
 mathematical algorithm, mathematics education (at all levels), and
 mathematical research than any existing web applications.
@@ -78,7 +79,7 @@ mathematical research than any existing web applications.
 
 The PI has spent much of Summer 2012 on the foundations of Salvus, and
 will make a limited-functionality version available by the end of
-September 2012.  He intends to have a version up and running with
+September 2012 (see \url{https://salv.us}).  He intends to have a version up and running with
 comparable functionality to the existing Sage Notebook by March 2012,
 and build a core subscriber base of at least 2500 users by August
 2013; work during Winter 2013 is being funded by the remainder of his
@@ -92,80 +93,21 @@ current Sage Notebook and Salvus.
 \begin{enumerate}
 \item Market an enterprise version of Salvus that customers can
   install on an internal secure network on their own hardware.
-\item Negotiate license agreements to allow use of commercial software
-  through the Salvus interface: Matlab, Mathematica, Maple, Magma
+\item Greatly improve support for using software other than Sage
+  through the Salvus interface, including Octave, Scilab, R, Matlab,
+  Mathematica, Maple, and Magma. This will help draw in users from the
+  sciences.
+\item Implement editors for at least the following document types:
+  command line, Latex document, Mathcad style free-form document,
+  python and sage files, and for fast interactive 2d and 3d graphics
+  using modern web standard such as HTML5 canvas and WebGL.
 \item Integrate with many popular cloud storage and repository hosting
   services, including Dropbox, Google Drive, Github, Google Code, and
   Bitbucket.
-\item Implement editors for the following document types: command
-  line, Latex document, Mathcad style free-form document, .py and
-  .sage files,
-\item Implement fast interactive 2d and 3d graphics using modern web
-  standard such as HTML5 canvas and WebGL.
-\item Greatly improve support for using free software other than Sage
-  through the Salvus interface, including Octave, Scilab, and R.
 \item Make it possible for people to write and modify the code that
   gets included with Sage entirely using Salvus, so anybody can
   constribute to Sage without having to install Sage.
 \end{enumerate}
-
-
-\subsection{The Sage Notebook}
-\begin{figure}
-\begin{center}
-\includegraphics[width=0.6\textwidth]{nb1}
-\caption{Interactive Image Compression in the Sage Notebook\label{fig:interact}}
-\end{center}
-\end{figure}
-The Sage notebook is a web application, like Gmail or Google Maps.
-It provides an interactive web-based worksheet in which one can enter
-arbitrary Sage commands, see beautifully typeset output, create 2-D
-and 3-D graphics, publish worksheets, and collaborate with other
-users.
-
-The PI and several UW undergraduates together developed the basic
-implementation of the current version of the Sage notebook during an
-extremely intense three-week coding session in Summer 2007.  This coding
-work was motivated by UW's SIMUW program, which is an intense summer
-mathematics program for about 25 high school students.  In 2007, the
-PI taught a two-week SIMUW course using the Sage notebook on the Riemann
-Hypothesis.  In 2008 he taught another 2-week SIMUW course on
-Quantitative Finance using the notebook's new interactive controls
-feature (see Figure~\ref{fig:interact}).
-
-The Sage notebook is a much beloved ``killer application'' of Sage:
-\begin{quote}
-  In my opinion, SAGE's notebook is the real killer feature, which I
-  don't recall to have seen in any other (commercial or not)
-  software. I mean, this is the only scientific program that I've
-  found, allowing such an easy collaborative job within local
-  networks.
-
- -- Maurizio, the Sage mailing list.
-\end{quote}
-
-Professors at dozens of universities around the world are getting
-excited about how they can leverage the Sage notebook in their
-teaching.
-\begin{quote}
-With some colleagues in our University (Lyon, France) we have built a
-project around Sage for undergraduate students... {\em And the University has
-decided to support this project.} Good news.
-
-Now we will be facing the problem to build a Sage configuration which
-will work for say 200 students at the same time (students will use the
-notebook), and prepare professors for Sage teaching. There are `some'
-technical problems to solve...
- 
--- T. Dumont, the Sage mailing list.
-\end{quote}
-
-The Sage notebook presently does not robustly scale to more than about
-100 users at the same time, no matter how good the hosting hardware
-is.  The PI proposes tovastly improving the robustness and scalability
-of the notebook.  The PI is well positioned to succeed at this
-project, since he is intimately familiar with all aspects of the
-notebook codebase.
 
 
 \section{Procedure}
@@ -175,6 +117,40 @@ notebook codebase.
 % research or data collection, state whether permission has been
 % obtained.
 
+\subsection{Computer Hardware}
+Purchasing access to computers located at multiple datacenters is
+critical to this proposal, given the dual goals of high availability
+(fully available even when a data center goes down) and scalability
+(10,0000 simultaneous users).
+
+\begin{enumerate}
+\item {\bf Padelford Hall Server Room:} 4 1U Dell R415's with 64GB RAM
+  and 16 3Ghz cores (one time cost of \$10K)
+\item {\bf UW Colocation Facility in the tower:} 4 1U Dell R415's with
+  64GB RAM and 16 3Ghz cores (one time cost of \$10K; yearly hosting
+  cost of \$1200)
+\item {\bf Servedby.net cloud computing
+  provider}\footnote{Servedby.net is owned and run by a recent UW
+  undergraduate}: 16 8GB instances (cost?)
+\item {\bf Amazon.com EC2:} 16 m1.large spot instances (one bids on
+  them; they are much cheaper than guaranteed instances; they are not
+  always available); cost -- around \$10K/year.
+\item {\bf Google App Engine:} the PI was awarded \$60K in Google App
+  Engine credits, which can only be used to support Salvus during one
+  year from the date of first use.
+\end{enumerate}
+
+\subsection{Computer Software}
+To support fault tolerance, the PI has designed Salvus so that it has
+no single (or even double!) points of failure.  The underlying
+database is Cassandra (see \url{http://www.datastax.com/}), which is
+designed so that it continues to function well even if several nodes
+(or even a whole data center) fails.  Cassandra was open sourced by
+Facebook, and is now heavily used by Netflix, Disney, and many other
+companies.
+
+
+
 
 \section{Time Schedule}
 % Provide a schedule showing how the proposed research can be
@@ -182,12 +158,23 @@ notebook codebase.
 % is normally limited to one year. A no-cost extension of up to one
 % year may be granted if requested and adequately justified.
 
-The PI intends to work full time for three months (Sept 16--Dec 16, 2013) on this project.
+The PI intends to work full time for three months (October -- December 2013):
 
 \begin{enumerate}
-\item Month 1: ??
-\item Month 2: ??
-\item Month 3: ??
+\item {\bf October, 2013:} Package and test a standalone enterprise
+  version of Salvus.  Work with lawyers at C4C to nail down licensing
+  and copyright issues. The PI has existing longterm relationships
+  with two large potential customers.  Also, work to improve robust
+  support for R, Matlab, Magma, etc., which is of interest to such
+  customers.
+\item {\bf November, 2013:} Improve support for a wide range of
+  filetypes, while integrating Salvus with popular cloud storage and
+  hosting services.
+\item {\bf December, 2013:} Building on support for repository hosting
+  from the previous month, make it possible for people to write and
+  modify the code that gets included with Sage entirely using Salvus.
+  This will indirectly contribute to the ultimate goal of improving
+  the core capabilities of Sage.
 \end{enumerate}
 
 
