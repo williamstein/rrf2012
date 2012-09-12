@@ -2,9 +2,9 @@
 [x] cover
 [x] budget
 [x] support
-[ ] cover: abstract -- (maximum of 250 words)
-[ ] cover: put in eGC1 number
 [ ] research
+[ ] cover: abstract -- (maximum of 250 words)
 [ ] citations
+[ ] cover: put in eGC1 number
 [ ] send: "SUGGESTED_REVIEWERS_MEMO.docx" to rrfprop@u.washington.edu right after I submit my proposal.
 

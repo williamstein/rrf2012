@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{pdfpages}
 \include{macros}
 \newcommand{\thisdocument}{RRF: Proposed Research}
 
@@ -11,84 +12,101 @@
 %background, and justification for the proposed research. Describe any
 %results already achieved, including publications.]]
 
-Most of the PI's published research work is in
-number theory, which is an area of pure mathematics.  The PI embarked
-on a new and risky research path at Harvard in 2005, when he started
-the Sage mathematical software project, which has greatly grown since
-he was recruited by UW in 2006.  There are now around 500 Sage
-developers, over 10,000 downloads of Sage per month, and over 55,000
-unique visitors each month to the \url{http://sagemath.org} website.
-Sage is a free self contained program that you can download and run on
-your computer, and the goal of the project is to create a viable free
-open source alternative to the commercial systems Maple, Mathematica,
-Matlab and Magma.
+Most of the PI's published research work is in number theory, which is
+an area of pure mathematics.  The PI embarked on a new and risky path
+at Harvard in 2005, when he started the Sage mathematical software
+project, which has grown substantially since he was recruited by UW in
+2006.  There are now around 500 Sage developers, over 10,000 downloads
+of Sage per month, and over 55,000 unique visitors each month to the
+\url{http://sagemath.org} website.  Sage is a very large free
+self-contained program for doing sophisticated mathematics, which you
+can download and run on your computer.  The goal of the Sage project is to
+create a viable free open source alternative to the commercial systems
+Maple, Mathematica, Matlab and Magma.
+The PI has published several articles about Sage, including
+\cite{} ??.
 
 The Sage notebook, whose development was partly supported by the RRF
 program in 2009, is the primary user interface to Sage.  It was
 designed mainly for use by a relatively small number of people, but
-there is a public free version that anybody can instantly start using
-at \url{http://sagenb.org}.  Sage is software for doing serious number
+there is a public free version that anybody can freely start using at
+\url{http://sagenb.org}.  Sage is software for doing serious number
 crunching, so it is extremely resource intensive.  The notebook runs
-on one computer the PI purchased in {\bf 2008} and has around 100,000
-user accounts!  There are usually well over 50 people attempting to
-use \url{http://sagenb.org} at any given time.
+on one powerful computer that the PI purchased in {\bf 2008} and it
+has around 100,000 user accounts!  There are usually well over 50
+people attempting to use \url{http://sagenb.org} at any given time.
 
-\begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{nb2}
-\caption{A Screenshot Showing the Sage Notebook\label{fig:sagenb}}
-\end{center}
+\begin{figure}[ht]
+\hfill
+\includegraphics[height=0.28\textheight]{nb2}
+\hfill
+\includegraphics[height=0.28\textheight]{nb1}
+\hfill
+\mbox{}
+\caption{Screenshots Showing the Sage Notebook\label{fig:sagenb}}
 \end{figure}
+\end{center}
 
-{\bf Goal of this project:} {\em Create a new web-based service called
-  Salvus, which will be highly available, horizontally scalable and
-  able to gracefully handle up to 10,000 simultaneous users.  Provide
-  both free and non-free options, with revenue from the non-free
-  option supporting hardware, maintenance, and core development of
-  Sage.}
+\noindent{}{\bf Goal:} {\em Create a web application (based on Sage)
+  called Salvus, which is designed from the start to be secure, highly
+  available, horizontally scalable and able to robustly handle up to
+  10,000 simultaneous users.  Provide both free and non-free accounts,
+  with revenue from the non-free subscriptions supporting maintenance
+  and purchase of hardware, and the development of Sage.}
 
-Instead of students, teachers, and researchers having to pay to buy
-expensive commercial mathematical software and install it on their
-computers, Salvus would provide the option to {\em reliably} and
-efficiently use Sage over the web.  At many institutions, purchasing
-computer software---especially mathematical software---is a
-significant burden, and Sage has helped address this problem, but the
-burden of installing, mainting, and upgrading Sage remains, and the
-Sage notebook hasn't solved that problem because it is too slow and
-unreliable.     This project has the potential to have a profound impact
-on education at all levels. 
+Instead of teachers and researchers having to pay to buy expensive
+commercial mathematical software and install it on their computers, or
+be frustrated with the current Sage notebook, Salvus would provide
+them the option to {\em reliably} and efficiently use Sage over the
+web and confidently get their students to use it.  At many
+institutions, purchasing computer software---especially mathematical
+software---is a significant burden, and Sage has helped address this
+problem, but the burden of installing, mainting, and upgrading Sage
+remains, and the Sage notebook hasn't solved that problem because it
+is too slow and unreliable.  This project has the potential to have a
+profound impact on education at all levels.
+
+There are several web-based software development environments, e.g.,
+\url{https://c9.io/}, which have some similarieties to what we plan to
+implement with Salvus.  However, Salvus is much more focused on
+mathematical algorithm, mathematics education (at all levels), and
+mathematical research than any existing web applications.
 
 \section{Objectives}
 %What is the project designed to accomplish?
 
-The PI is actively working on the first technical stages of Salvus,
-and plans to have a useful version up and running with similar
-functionality to the existing Sage Notebook and a core subscriber base
-by August 2013, with work during Summer 2013 partly funded by an NSF
-grant.  This RRF would allow the PI to work fulltime straight through
-until late December 2013 on the second stage of the Salvus project.
-
-The specific goals would be to directly address some significant {\em
-  functionality} that is completely missing from the current Sage
-Notebook's design, and isn't a priority for the first stage of work on
-Salvus.
+The PI has spent much of Summer 2012 on the foundations of Salvus, and
+will make a limited-functionality version available by the end of
+September 2012.  He intends to have a version up and running with
+comparable functionality to the existing Sage Notebook by March 2012,
+and build a core subscriber base of at least 2500 users by August
+2013; work during Winter 2013 is being funded by the remainder of his
+startup money, and during some of Summer 2013 by an NSF grant.  This
+RRF would allow the PI to work fulltime straight through until late
+December 2013 on the next stage of the Salvus project. The specific
+goals for the second stage of development will address some
+significant {\em functionality} that is completely missing from the
+current Sage Notebook and Salvus.
 
 \begin{enumerate}
-\item Implement editors for the following document types: command
-  line, Sage worksheet, Latex document, Mathcad style free-form
-  document
-\item Integrate with the following cloud storage services: Google
-  Drive, Dropbox, ???
-\item Fast interactive 2d and 3d graphical applications, such as
-  interactive editor for networks and 2d plane geometry.
-\item Create a re-distributable enterprise version of Salvus that
-  customers can install on an internal secure network on their own
-  hardware.
-\item Greatly improve support for using software other than Sage
-  through the Salvus interface, including Octave, Scilab.
+\item Market an enterprise version of Salvus that customers can
+  install on an internal secure network on their own hardware.
 \item Negotiate license agreements to allow use of commercial software
-  through the Salvus interface: Matlab, Mathematica, Maple
-\item Support browser-based development of Sage
+  through the Salvus interface: Matlab, Mathematica, Maple, Magma
+\item Integrate with many popular cloud storage and repository hosting
+  services, including Dropbox, Google Drive, Github, Google Code, and
+  Bitbucket.
+\item Implement editors for the following document types: command
+  line, Latex document, Mathcad style free-form document, .py and
+  .sage files,
+\item Implement fast interactive 2d and 3d graphics using modern web
+  standard such as HTML5 canvas and WebGL.
+\item Greatly improve support for using free software other than Sage
+  through the Salvus interface, including Octave, Scilab, and R.
+\item Make it possible for people to write and modify the code that
+  gets included with Sage entirely using Salvus, so anybody can
+  constribute to Sage without having to install Sage.
 \end{enumerate}
 
 
@@ -209,6 +227,17 @@ potential funding options for Sage dramatically, by very efficiently
 providing a new key service that is in high demand, but nobody
 currently makes available.
 
+\subsection{RRF Scholar Application: documentation of teaching load}
+The standard teaching load is about 4.5 quarter courses per year.  The
+PI is requesting a buyout for 2 Calculus courses (MATH 124: {\em
+  Calculus with Analytic Geometry I}, 5 credits, or similar), which he
+would likely teach if not supported by an RRF.
 
+\subsection{C4C Letter of Support}\label{sec:letter}
+Finally, we close this proposal with a letter of support from the UW
+Center for Commercialization, which helps explain how the results of
+this work could lead to further funding.
+
+\includepdf[pages=-]{letter_from_c4c}
 
 \end{document}
