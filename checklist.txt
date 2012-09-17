@@ -7,8 +7,7 @@
 [x] citations
 [x] cover: put in eGC1 number
 
-[ ] polish
-[ ] spell check somehow
-[ ] submit officially to susan
+[x] polish
+[x] submit officially to susan
 [ ] send: "SUGGESTED_REVIEWERS_MEMO.docx" to rrfprop@u.washington.edu right after I submit my proposal.
 
